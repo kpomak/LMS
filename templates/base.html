@@ -1,3 +1,5 @@
+{% load static %}
+
 <!doctype html>
 <html lang="ru">
 
@@ -8,20 +10,20 @@
     content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 
   <!-- ChartJS -->
-  <link rel="stylesheet" href="/static/css/Chart.min.css">
+  <link rel="stylesheet" href="{% static 'css/Chart.min.css' %}">
 
   <!-- FontAwesome -->
-  <link rel="stylesheet" href="/static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="{% static 'css/fontawesome.all.min.css' %}">
 
   <title>Welcome to Braniac!</title>
 </head>
 
 <body>
 
-    {% include 'includes/main_menu.html' %}
+  {% include 'includes/main_menu.html' %}
 
   <div class="container-md">
 
@@ -48,9 +50,9 @@
         </p>
         <p>
         <ul class="list-unstyled">
-          <li><a href="index.html">Домашняя</a></li>
-          <li><a href="news.html">Новости</a></li>
-          <li><a href="login.html">Войти</a></li>
+          <li><a href="{% url 'mainapp:main_page' %}">Домашняя</a></li>
+          <li><a href="{% url 'mainapp:news' %}">Новости</a></li>
+          <li><a href="{% url 'mainapp:login' %}">Войти</a></li>
         </ul>
         </p>
       </div>
@@ -63,7 +65,7 @@
           <li><a href="#">Положения &amp; Условия</a></li>
           <li><a href="#">Конфиденциальность &amp; Cookies</a></li>
           <li><a href="#">Документация по API</a></li>
-          <li><a href="doc_site.html">Документация по сайту</a></li>
+          <li><a href="{% url 'mainapp:doc_site' %}">Документация по сайту</a></li>
         </ul>
         </p>
       </div>
@@ -109,15 +111,15 @@
 
   <!-- JavaScript section -->
   <!-- Bootstrap -->
-  <script src="/static/js/jquery-3.6.0.min.js"></script>
-  <script src="/static/js/popper.min.js"></script>
-  <script src="/static/js/bootstrap.min.js"></script>
+  <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+  <script src="{% static 'js/popper.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
 
   <!-- ChartJs -->
-  <script src="/static/js/Chart.min.js"></script>
+  <script src="{% static 'js/Chart.min.js' %}"></script>
 
   <!-- FontAwesome -->
-  <script src="/static/js/fontawesome.all.min.js"></script>
+  <script src="{% static 'js/fontawesome.all.min.js' %}"></script>
 
 
 
