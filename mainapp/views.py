@@ -3,6 +3,7 @@ import os
 from datetime import datetime
 
 from django.conf import settings
+from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView
 
 
@@ -47,3 +48,7 @@ class DocSitePageView(TemplateView):
 
 class LoginPageView(TemplateView):
     template_name = "mainapp/login.html"
+
+
+def search_redirect(request):
+    return HttpResponseRedirect('https://www.google.com/search?q=' + request.GET['q'])
