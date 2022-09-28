@@ -51,4 +51,4 @@ class LoginPageView(TemplateView):
 
 
 def search_redirect(request):
-    return HttpResponseRedirect('https://www.google.com/search?q=' + request.GET['q'])
+    return HttpResponseRedirect("https://www.google.com/search?q=" + request.GET["q"])
