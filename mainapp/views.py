@@ -1,6 +1,7 @@
-import os
 import json
+import os
 from datetime import datetime
+
 from django.conf import settings
 from django.views.generic import TemplateView
 
