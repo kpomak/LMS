@@ -29,6 +29,19 @@
     </div>
     {% endfor %}
 
+    {% for new in news %}
+    <div class="card my-2">
+      <div class="card-body">
+        <h5 class="card-title">{{ new.title }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+          {{ datetime_obj|date:"Y-m-d h-i-s" }}
+        </h6>
+        <p class="card-text">{{ new.preview }}</p>
+        <a href="#" class="card-link">Подробнее</a>
+      </div>
+    </div>
+    {% endfor %}
+
   </div>
 
   <div class="col-lg-4">
