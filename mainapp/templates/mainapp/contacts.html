@@ -1,146 +1,131 @@
 {% extends 'base.html' %}
+{% load email_to_link %}
 
 {% block content %}
 
-<div id="carouselExampleIndicators" class="carousel slide carousel-fade"
-  data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0"
-      class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner"
-    style="background-color: #777; font-size: 1.25rem;">
-    <div class="carousel-item active">
-      <img src="/static/img/slider001.jpg" class="d-block w-100" alt=""
-        style="opacity: 0.3;">
-      <div class="carousel-caption d-none d-md-block">
-        <h3>Будь продуктивным</h3>
-        <p>Изучай только актуальные тренды современного IT</p>
+<p>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Наши контакты</h1>
+    <p class="lead">Обязательно свяжитесь с нами! Ваш комфорт - наша забота.
+    </p>
+  </div>
+</div>
+</p>
+<p>
+<div class="row justify-content-around mt-n2">
+
+  <div class="col-sm-6 col-md-6 col-lg-4 pb-2">
+    <div class="card h-100 shadow">
+      <div class="card-body">
+        <div style="position:relative;overflow:hidden;"><a
+            href="https://yandex.ru/maps/org/petropavlovskaya_krepost/146720535721/?utm_medium=mapframe&utm_source=maps"
+            style="color:#eee;font-size:12px;position:absolute;top:0px;">Петропавловская
+            крепость</a><a
+            href="https://yandex.ru/maps/2/saint-petersburg/category/landmark_attraction/89683368508/?utm_medium=mapframe&utm_source=maps"
+            style="color:#eee;font-size:12px;position:absolute;top:14px;">Достопримечательность
+            в
+            Санкт‑Петербурге</a><a
+            href="https://yandex.ru/maps/2/saint-petersburg/category/museum/184105894/?utm_medium=mapframe&utm_source=maps"
+            style="color:#eee;font-size:12px;position:absolute;top:28px;">Музей
+            в
+            Санкт‑Петербурге</a><iframe
+            src="https://yandex.ru/map-widget/v1/-/CCUAZHcrhA" width="100%"
+            height="300" frameborder="0" allowfullscreen="true"
+            style="position:relative; border-radius: 4px;"></iframe>
+        </div>
+        <h5 class="card-title">Санкт‑Петербург</h5>
+        <p class="card-text">
+        <ul class="list-unstyled">
+          <li>Телефон</li>
+          <li><strong>+7-999-11-11111</strong></li>
+        </ul>
+        <ul class="list-unstyled">
+          <li>Email</li>
+          <li><strong>{{ 'geeklab@spb.ru'|email_to_link }}</strong></li>
+        </ul>
+        <ul class="list-unstyled">
+          <li>Адрес</li>
+          <li><strong>территория Петропавловская крепость, 3Ж</strong>
+          </li>
+        </ul>
+        </p>
       </div>
     </div>
-    <div class="carousel-item">
-      <img src="/static/img/slider002.jpg" class="d-block w-100" alt=""
-        style="opacity: 0.3;">
-      <div class="carousel-caption d-none d-md-block">
-        <h3>Учись где угодно</h3>
-        <p>Парк, библиотека или дома под тёплым пледом - выбирай время и место
-          учёбы сам</p>
+  </div>
+
+  <div class="col-sm-6 col-md-6 col-lg-4 pb-2">
+    <div class="card h-100 shadow">
+      <div class="card-body">
+        <div style="position:relative;overflow:hidden;"><a
+            href="https://yandex.ru/maps/org/kazanskiy_kreml/95813866834/?utm_medium=mapframe&utm_source=maps"
+            style="color:#eee;font-size:12px;position:absolute;top:0px;">Казанский
+            Кремль</a><a
+            href="https://yandex.ru/maps/43/kazan/category/museum/184105894/?utm_medium=mapframe&utm_source=maps"
+            style="color:#eee;font-size:12px;position:absolute;top:14px;">Музей
+            в Казани</a><a
+            href="https://yandex.ru/maps/43/kazan/category/landmark_attraction/89683368508/?utm_medium=mapframe&utm_source=maps"
+            style="color:#eee;font-size:12px;position:absolute;top:28px;">Достопримечательность
+            в
+            Казани</a><iframe src="https://yandex.ru/map-widget/v1/-/CCUAZHX3xB"
+            width="100%" height="300" frameborder="0" allowfullscreen="true"
+            style="position:relative; border-radius: 4px;"></iframe>
+        </div>
+        <h5 class="card-title">Казань</h5>
+        <p class="card-text">
+        <ul class="list-unstyled">
+          <li>Телефон</li>
+          <li><strong>+7-999-22-22222</strong></li>
+        </ul>
+        <ul class="list-unstyled">
+          <li>Email</li>
+          <li><strong>{{ 'geeklab@kz.ru'|email_to_link }}</strong></li>
+        </ul>
+        <ul class="list-unstyled">
+          <li>Адрес</li>
+          <li><strong>территория Кремль, 11, Казань, Республика
+              Татарстан, Россия</strong></li>
+        </ul>
+        </p>
       </div>
     </div>
-    <div class="carousel-item">
-      <img src="/static/img/slider003.jpg" class="d-block w-100" alt=""
-        style="opacity: 0.3;">
-      <div class="carousel-caption d-none d-md-block">
-        <h3>Braniac - это МЫ</h3>
-        <p>Вливайся в нашу IT-тусовку - нас уже более 5000 брайниаков</p>
+  </div>
+
+  <div class="col-sm-6 col-md-6 col-lg-4 pb-2">
+    <div class="card h-100 shadow">
+      <div class="card-body">
+        <div style="position:relative;overflow:hidden;"><a
+            href="https://yandex.ru/maps/org/sobor_pokrova_presvyatoy_bogoroditsy_na_rvu/175159255687/?utm_medium=mapframe&utm_source=maps"
+            style="color:#eee;font-size:12px;position:absolute;top:0px;">Собор
+            Покрова Пресвятой
+            Богородицы на Рву</a><a
+            href="https://yandex.ru/maps/213/moscow/category/museum/184105894/?utm_medium=mapframe&utm_source=maps"
+            style="color:#eee;font-size:12px;position:absolute;top:14px;">Музей
+            в Москве</a><iframe
+            src="https://yandex.ru/map-widget/v1/-/CCUAZHh9kD" width="100%"
+            height="300" frameborder="0" allowfullscreen="true"
+            style="position:relative; border-radius: 4px;"></iframe>
+        </div>
+        <h5 class="card-title">Москва</h5>
+        <p class="card-text">
+        <ul class="list-unstyled">
+          <li>Телефон</li>
+          <li><strong>+7-999-33-33333</strong></li>
+        </ul>
+        <ul class="list-unstyled">
+          <li>Email</li>
+          <li><strong>{{ 'geeklab@msk.ru'|email_to_link }}</strong></li>
+        </ul>
+        <ul class="list-unstyled">
+          <li>Адрес</li>
+          <li><strong>Красная площадь, 7, Москва, Россия</strong></li>
+        </ul>
+        </p>
       </div>
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators"
-    role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators"
-    role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-
-<div class="jumbotron">
-  <h1 class="display-4">Приветствую, путник!</h1>
-  <p class="lead">
-    На данном портале мы собрали сообщество людей объединённых одной целью -
-    получать знания! В современном
-    мире
-    уже сложно представить человека не общающегося с компьютером. Повсеместное
-    проникновение интернета дало
-    возможность объеденить людей и сделать знания доступными как никогда ранее.
-    У тебя есть уникальная
-    возможность получить актуальные знания используя современные технологии. Не
-    упусти свой шанс и переходи
-    на
-    вкладку "Курсы", записывайся на курсы и становись востребованным
-    специалистом.
-  </p>
-</div>
-
-<h3>Отзывы участников сообщества</h3>
-
-
-<div class="row text-center">
-
-
-  <div class="col-lg-4">
-    <img src="/static/img/user001.png" alt="" style="max-width: 140px;">
-    <h2>Лера</h2>
-    <p>Выучила Python и получаю 300кк в секунду! Спасибо Браниаку!</p>
-  </div>
-
-  <div class="col-lg-4">
-    <img src="/static/img/user002.png" alt="" style="max-width: 140px;">
-    <h2>Антоша</h2>
-    <p>Больше не туплю в excel - только БД только хардкор!</p>
-  </div>
-
-  <div class="col-lg-4">
-    <img src="/static/img/user003.png" alt="" style="max-width: 140px;">
-    <h2>Леонард</h2>
-    <p>Как пропатчить KDE под FreeBSD?!</p>
-  </div>
-
 
 </div>
-
-<div class="my-5">
-  <hr>
-</div>
-
-<div class="row justify-content-center align-items-center">
-  <div class="col-md-7">
-    <h1>Сотни готовых курсов от лучших авторов</h1>
-    <p>Выбирай из огромной коллекции готовых решений для самообразования</p>
-  </div>
-  <div class="col-md-5">
-    <img src="/static/img/promo001.jpg" alt="" class="w-100 h-100 rounded"
-      style="opacity: 0.7;">
-  </div>
-</div>
-
-<div class="my-5">
-  <hr>
-</div>
-
-<div class="row justify-content-center align-items-center">
-  <div class="col-md-5">
-    <img src="/static/img/promo002.jpg" alt="" class="w-100 h-100 rounded"
-      style="opacity: 0.7;">
-  </div>
-  <div class="col-md-7">
-    <h1>Монетизируй знания</h1>
-    <p>Эксперт в свой области - давай к нам! Выгодные условия для тебя и
-      пользователи со всего мира на нашей
-      платформы</p>
-  </div>
-</div>
-
-<div class="my-5">
-  <hr>
-</div>
-
-<div class="row justify-content-center align-items-center">
-  <div class="col-md-7">
-    <h1>Вместе мы сила</h1>
-    <p>Проекты любой сложности становятся легче, если ты в компании
-      единомышленников. Присоединяйся!</p>
-  </div>
-  <div class="col-md-5">
-    <img src="/static/img/promo003.jpg" alt="" class="w-100 h-100 rounded"
-      style="opacity: 0.7;">
-  </div>
-</div>
+</p>
 
 {% endblock content %}
