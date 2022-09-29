@@ -90,12 +90,10 @@ def reverse_func(apps, schema_editor):
     News.objects.all().delete()
 
 
-
-
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('mainapp', '0001_initial'),
+        ("mainapp", "0001_initial"),
     ]
 
     operations = [

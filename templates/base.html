@@ -18,7 +18,13 @@
   <!-- FontAwesome -->
   <link rel="stylesheet" href="{% static 'css/fontawesome.all.min.css' %}">
 
-  <title>Welcome to Braniac!</title>
+  <link rel="icon" href="{% static 'favicon.ico' %}" type="image/png"> 
+
+  <title>
+    {% block title %}
+    Welcome to Braniac!
+    {% endblock title %}
+  </title>
 </head>
 
 <body>
