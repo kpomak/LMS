@@ -96,6 +96,14 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = "authapp.CustomUser"
 
+AUTHENTICATION_BACKENDS = (
+    "social_core.backends.github.GithubOAuth2",
+    "django.contrib.auth.backends.ModelBackend",
+)
+
+SOCIAL_AUTH_GITHUB_KEY = "ea2aa1e7f5d1414eeb60"
+SOCIAL_AUTH_GITHUB_SECRET = "de4d4741099124d4eabeace95bb10c305423c91c"
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
