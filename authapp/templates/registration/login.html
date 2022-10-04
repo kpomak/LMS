@@ -36,9 +36,9 @@
 
                 {% csrf_token %}
                 <p>
-                    <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username"
-                        maxlength="150" class="textinput textInput form-control" required="" id="id_username"
-                        placeholder="Username">
+                    <input type="email" name="username" autofocus="" autocapitalize="none" autocomplete="email"
+                        maxlength="256" class="textinput textInput form-control" required="" id="id_username"
+                        placeholder="user@mail.com">
                 </p>
                 <p>
                     <input type="password" name="password" autocomplete="current-password"

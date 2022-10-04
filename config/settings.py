@@ -98,7 +98,8 @@ AUTH_USER_MODEL = "authapp.CustomUser"
 
 AUTHENTICATION_BACKENDS = (
     "social_core.backends.github.GithubOAuth2",
-    "django.contrib.auth.backends.ModelBackend",
+    "authapp.auth.EmailAuthBackend",
+    # "django.contrib.auth.backends.ModelBackend",
 )
 
 SOCIAL_AUTH_GITHUB_KEY = "ea2aa1e7f5d1414eeb60"
