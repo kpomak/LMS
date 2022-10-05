@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     "social_django",
     "mainapp",
     "authapp",
+    "cryspy_forms",
 ]
 
 MIDDLEWARE = [
@@ -141,3 +142,5 @@ LOGIN_REDIRECT_URL = "mainapp:news"
 LOGOUT_REDIRECT_URL = "mainapp:main_page"
 
 MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
