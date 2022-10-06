@@ -34,4 +34,6 @@ urlpatterns = [
     path("contacts/", views.ContactsPageView.as_view(), name="contacts"),
     path("doc_site/", views.DocSitePageView.as_view(), name="doc_site"),
     path("search/", views.search_redirect, name="search"),
+    path("log_view/", views.LogView.as_view(), name="log_view"),
+    path("log_download/", views.LogDownloadView.as_view(), name="log_download"),
 ]

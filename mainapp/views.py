@@ -1,12 +1,18 @@
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-from django.http import HttpResponseRedirect, JsonResponse
+import logging
+from collections import deque
+
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
+from django.http import FileResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, DeleteView, DetailView, ListView, TemplateView, UpdateView
+from django.views.generic import CreateView, DeleteView, DetailView, ListView, TemplateView, UpdateView, View
 
+from config import settings
 from mainapp import forms as mainapp_forms
 from mainapp import models as mainapp_models
+
+logger = logging.getLogger(__name__)
 
 
 class MainPageView(TemplateView):
@@ -96,3 +102,27 @@ class DocSitePageView(TemplateView):
 
 def search_redirect(request):
     return HttpResponseRedirect("https://www.google.com/search?q=" + request.GET["q"])
+
+
+class LogView(TemplateView):
+    template_name = "mainapp/log_view.html"
+
+    def get_context_data(self, **kwargs):
+        LOG_RANGE = 1000
+        context = super(LogView, self).get_context_data(**kwargs)
+        log_slice = deque()
+        with open(settings.LOG_FILE) as log_file:
+            for line in log_file:
+                log_slice.appendleft(line)
+                if len(log_slice) > LOG_RANGE:
+                    log_slice.pop()
+            context["log"] = "".join(log_slice)
+        return context
+
+
+class LogDownloadView(UserPassesTestMixin, View):
+    def test_func(self):
+        return self.request.user.is_superuser
+
+    def get(self, *args, **kwargs):
+        return FileResponse(open(settings.LOG_FILE, "rb"))
