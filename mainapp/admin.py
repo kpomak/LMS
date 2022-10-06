@@ -4,9 +4,35 @@ from django.utils.translation import gettext_lazy as _
 from mainapp import models as mainapp_models
 
 
+class InputFilter(admin.SimpleListFilter):
+    template = "admin/input_filter.html"
+
+    # def lookups(self, request, model_admin):
+    #     return ((),)
+
+    def choices(self, changelist):
+        all_choice = next(super().choices(changelist))
+        all_choice["query_parts"] = (
+            (k, v) for k, v in changelist.get_filters_params().items() if k != self.parameter_name
+        )
+        yield all_choice
+
+
+class TextInputFilter(InputFilter):
+    parameter_name = "text"
+    title = _("text in news title")
+
+    def queryset(self, request, queryset):
+        if self.value() is not None:
+            text = self.value()
+
+            return queryset.filter(title__contains=text)
+
+
 @admin.register(mainapp_models.News)
 class NewsAdmin(admin.ModelAdmin):
     search_fields = ["title", "preambule", "body"]
+    list_filter = [TextInputFilter]
 
 
 @admin.register(mainapp_models.Lesson)
