@@ -15,7 +15,7 @@ class LessonAdmin(admin.ModelAdmin):
     ordering = ["-course__name", "-num"]
     list_per_page = 5
     list_filter = ["course", "created", "deleted"]
-    actions = ["mark_deleted"]
+    actions = ["mark_deleted", "mark_undeleted"]
 
     def get_course_name(self, obj):
         return obj.course.name
@@ -26,3 +26,8 @@ class LessonAdmin(admin.ModelAdmin):
         queryset.update(deleted=True)
 
     mark_deleted.short_description = _("Mark deleted")
+
+    def mark_undeleted(self, request, queryset):
+        queryset.update(deleted=False)
+
+    mark_undeleted.short_description = _("Mark undeleted")
