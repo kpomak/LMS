@@ -7,8 +7,8 @@ from mainapp import models as mainapp_models
 class InputFilter(admin.SimpleListFilter):
     template = "admin/input_filter.html"
 
-    # def lookups(self, request, model_admin):
-    #     return ((),)
+    def lookups(self, request, model_admin):
+        return ((),)
 
     def choices(self, changelist):
         all_choice = next(super().choices(changelist))
@@ -32,7 +32,8 @@ class TextInputFilter(InputFilter):
 @admin.register(mainapp_models.News)
 class NewsAdmin(admin.ModelAdmin):
     search_fields = ["title", "preambule", "body"]
-    list_filter = [TextInputFilter]
+    list_filter = [TextInputFilter, "created"]
+    date_hierarchy = "created"
 
 
 @admin.register(mainapp_models.Lesson)
@@ -57,3 +58,14 @@ class LessonAdmin(admin.ModelAdmin):
         queryset.update(deleted=False)
 
     mark_undeleted.short_description = _("Mark undeleted")
+
+
+@admin.register(mainapp_models.CourseTeachers)
+class CourseTeachersAdmin(admin.ModelAdmin):
+    list_display = ["id", "__str__", "get_courses"]
+    list_select_related = True
+
+    def get_courses(self, obj):
+        return ", ".join((i.name for i in obj.course.all()))
+
+    get_courses.short_description = _("Courses")
