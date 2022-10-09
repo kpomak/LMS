@@ -47,7 +47,7 @@ class LessonAdmin(admin.ModelAdmin):
     def get_course_name(self, obj):
         return obj.course.name
 
-    get_course_name.short_description = _("Cou5rse")
+    get_course_name.short_description = _("Course")
 
     def mark_deleted(self, request, queryset):
         queryset.update(deleted=True)
