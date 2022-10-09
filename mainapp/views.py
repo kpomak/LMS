@@ -35,7 +35,7 @@ class NewsListView(ListView):
 class NewsCreateView(PermissionRequiredMixin, CreateView):
     model = mainapp_models.News
     fields = "__all__"
-    success_url = reverse_lazy("mainapp:news")
+    success_url = reverse_lazy("mainapp:news_create")
     permission_required = ("mainapp.add_news",)
 
 
@@ -95,6 +95,14 @@ class CoursesDetailView(TemplateView):
                 .select_related()
             )
             cache.set(f"feedback_list_{pk}", context["feedback_list"], timeout=300)  # 5 minutes
+            print(1)
+            # Archive object for tests --->
+            # import pickle
+
+            # with open(f"LMS/mainapp/fixtures/005_feedback_list_{pk}.bin", "wb") as outf:
+            #     pickle.dump(context["feedback_list"], outf)
+            # <--- Archive object for tests
+
         else:
             context["feedback_list"] = cached_feedback
 
