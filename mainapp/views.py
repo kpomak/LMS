@@ -4,6 +4,7 @@ from collections import deque
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
 from django.core.cache import cache
+from django.core.paginator import Paginator
 from django.http import FileResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404
 from django.template.loader import render_to_string
@@ -34,7 +35,7 @@ class NewsListView(ListView):
 class NewsCreateView(PermissionRequiredMixin, CreateView):
     model = mainapp_models.News
     fields = "__all__"
-    success_url = reverse_lazy("mainapp:news")
+    success_url = reverse_lazy("mainapp:news_create")
     permission_required = ("mainapp.add_news",)
 
 
@@ -57,11 +58,15 @@ class NewsDeleteView(PermissionRequiredMixin, DeleteView):
 
 class CoursesListView(TemplateView):
     template_name = "mainapp/courses_list.html"
+    paginate_by = 3
 
     def get_context_data(self, **kwargs):
 
         context = super(CoursesListView, self).get_context_data(**kwargs)
-        context["objects"] = mainapp_models.Courses.objects.all()[:7]
+        context["objects"] = mainapp_models.Courses.objects.all()
+        paginator = Paginator(context["objects"], self.paginate_by)
+        page_num = self.request.GET.get("page", 1)
+        context["page_obj"] = paginator.page(page_num)
         return context
 
 
@@ -90,6 +95,14 @@ class CoursesDetailView(TemplateView):
                 .select_related()
             )
             cache.set(f"feedback_list_{pk}", context["feedback_list"], timeout=300)  # 5 minutes
+            print(1)
+            # Archive object for tests --->
+            # import pickle
+
+            # with open(f"LMS/mainapp/fixtures/005_feedback_list_{pk}.bin", "wb") as outf:
+            #     pickle.dump(context["feedback_list"], outf)
+            # <--- Archive object for tests
+
         else:
             context["feedback_list"] = cached_feedback
 
